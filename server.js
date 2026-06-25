@@ -6,7 +6,9 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// ✅ Allow your Vercel frontend
+// Debug: confirm API key is loaded (will appear in Render logs)
+console.log('🔑 API key present?', !!process.env.ANTHROPIC_API_KEY);
+
 app.use(cors({
   origin: [
     'https://nbc-ai-reviews-frontend.vercel.app',
@@ -56,7 +58,8 @@ app.post('/api/generate', async (req, res) => {
 
   try {
     const message = await client.messages.create({
-      model: 'claude-3-5-haiku-20241022',   // ✅ Latest Haiku (valid)
+      // ✅ Use the latest Sonnet model (valid for all accounts)
+      model: 'claude-3-5-sonnet-20241022',
       max_tokens: 300,
       system: `You are a review-writing assistant for a cafe.
 
