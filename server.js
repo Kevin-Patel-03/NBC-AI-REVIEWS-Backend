@@ -1,14 +1,17 @@
 const express = require('express');
-const cors = require('cors');          // ← only ONE declaration
+const cors = require('cors');
 const Anthropic = require('@anthropic-ai/sdk');
 require('dotenv').config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// CORS – allow your Vercel frontend
+// ✅ Allow your Vercel frontend
 app.use(cors({
-  origin: ['https://nbc-ai-reviews-frontend.vercel.app', 'http://localhost:3000'],
+  origin: [
+    'https://nbc-ai-reviews-frontend.vercel.app',
+    'http://localhost:3000'
+  ],
   credentials: true
 }));
 
@@ -53,7 +56,7 @@ app.post('/api/generate', async (req, res) => {
 
   try {
     const message = await client.messages.create({
-      model: 'claude-3-haiku-20240307',   // ✅ valid model – cheap & fast
+      model: 'claude-3-5-haiku-20241022',   // ✅ Latest Haiku (valid)
       max_tokens: 300,
       system: `You are a review-writing assistant for a cafe.
 
@@ -93,5 +96,5 @@ Write a 2-3 sentence positive review based on these selected items.`
 });
 
 app.listen(PORT, () => {
-  console.log(`\n✅ Nothing Before Coffee review app running at http://localhost:${PORT}\n`);
+  console.log(`\n✅ Server running on port ${PORT}`);
 });
