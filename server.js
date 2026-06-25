@@ -6,7 +6,11 @@ require('dotenv').config();
 const app = express();
 const PORT = 3000;
 
-app.use(cors());
+const cors = require('cors');
+app.use(cors({
+  origin: ['nbc-ai-reviews-frontend.vercel.app', 'http://localhost:3000'], // add your Vercel URL later
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.static('public'));
 
