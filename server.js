@@ -13,7 +13,7 @@ console.log('🔑 API key present?', !!process.env.ANTHROPIC_API_KEY);
 
 app.use(cors({
   origin: [
-    'https://nbc-ai-reviews-frontend.vercel.app/api',
+    'https://nbc-ai-reviews-frontend.vercel.app',
     'http://localhost:3000'
   ],
   credentials: true
