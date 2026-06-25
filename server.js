@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const Anthropic = require('@anthropic-ai/sdk');
 require('dotenv').config();
+console.log('🔑 API key loaded?', !!process.env.ANTHROPIC_API_KEY);
+console.log('🔑 First 10 chars:', process.env.ANTHROPIC_API_KEY?.slice(0, 10));
 
 const app = express();
 const PORT = process.env.PORT || 3000;
