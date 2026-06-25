@@ -61,7 +61,7 @@ app.post('/api/generate', async (req, res) => {
   try {
     const message = await client.messages.create({
       // ✅ Use the latest Sonnet model (valid for all accounts)
-      model: 'claude-3-haiku-20240307',
+      model: 'claude-3-sonnet-20240229',
       max_tokens: 300,
       system: `You are a review-writing assistant for a cafe.
 
