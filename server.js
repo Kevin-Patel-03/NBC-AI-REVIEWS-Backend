@@ -54,6 +54,16 @@ app.post('/api/generate', async (req, res) => {
 
   const biz = DATABASE.business;
   const productList = selectedProducts.join(', ');
+   
+  // ✅ Paste the focuses array and randomFocus here
+  const focuses = [
+    'taste and flavour',
+    'value for money',
+    'service and staff behaviour',
+    'ambience and vibe',
+    'overall experience'
+  ];
+  const randomFocus = focuses[Math.floor(Math.random() * focuses.length)];
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
   try {
