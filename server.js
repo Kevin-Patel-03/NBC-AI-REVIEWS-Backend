@@ -1,16 +1,17 @@
 const express = require('express');
-const cors = require('cors');
+const cors = require('cors');          // ← only ONE declaration
 const Anthropic = require('@anthropic-ai/sdk');
 require('dotenv').config();
 
 const app = express();
 const PORT = 3000;
 
-const cors = require('cors');
+// CORS – allow your Vercel frontend
 app.use(cors({
-  origin: ['nbc-ai-reviews-frontend.vercel.app', 'http://localhost:3000'], // add your Vercel URL later
+  origin: ['https://nbc-ai-reviews-frontend.vercel.app', 'http://localhost:3000'],
   credentials: true
 }));
+
 app.use(express.json());
 app.use(express.static('public'));
 
@@ -52,7 +53,7 @@ app.post('/api/generate', async (req, res) => {
 
   try {
     const message = await client.messages.create({
-      model: 'claude-sonnet-4-6',
+      model: 'claude-3-haiku-20240307',   // ✅ valid model – cheap & fast
       max_tokens: 300,
       system: `You are a review-writing assistant for a cafe.
 
