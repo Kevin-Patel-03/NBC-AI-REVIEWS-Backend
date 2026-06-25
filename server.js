@@ -13,7 +13,7 @@ console.log('🔑 API key present?', !!process.env.ANTHROPIC_API_KEY);
 
 app.use(cors({
   origin: [
-    'https://nbc-ai-reviews-frontend.vercel.app',
+    'https://nbc-ai-reviews-frontend.vercel.app/api',
     'http://localhost:3000'
   ],
   credentials: true
@@ -61,7 +61,7 @@ app.post('/api/generate', async (req, res) => {
   try {
     const message = await client.messages.create({
       // ✅ Use the latest Sonnet model (valid for all accounts)
-      model: 'claude-3-sonnet-20240229',
+      model: 'claude-sonnet-4-6',
       max_tokens: 300,
       system: `You are a review-writing assistant for a cafe.
 
