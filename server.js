@@ -61,7 +61,7 @@ app.post('/api/generate', async (req, res) => {
 
   try {
     const message = await client.messages.create({
-      model: 'claude-haiku-4-5-20251001',    // 👈 Haiku: ~80% cheaper
+      model: 'claude-3-haiku-20240307',    // 👈 Haiku: ~80% cheaper
       max_tokens: 120,                     // 👈 reduced from 300
       system: `You are an Indian customer writing a cafe review in Hinglish. 
 Focus on "${randomFocus}". Be specific about taste, texture, price, or service. 
