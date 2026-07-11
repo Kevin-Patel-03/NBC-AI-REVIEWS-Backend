@@ -69,8 +69,8 @@ app.post('/api/generate', async (req, res) => {
   try {
     const message = await client.messages.create({
       // ✅ Use the latest Sonnet model (valid for all accounts)
-      model: 'claude-sonnet-4-6',
-      max_tokens: 300,
+      model: 'claude-3-5-haiku-20241022',
+      max_tokens: 100,
       system: `You are a genuine Indian customer writing a product review.  
 
 Input: You will receive a product name.  
